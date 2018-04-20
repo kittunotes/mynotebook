@@ -1,0 +1,165 @@
+NAI
+=========
+
+1. School of Archival : 
+		I was able to submit form.(Need some improvement)
+2. Payment Gateway integraion : 
+		Yet to Start. 
+3. The hyperlinks of website  are not working . 
+	Third Party website is down. We don't have controller over.
+4. Dedicated user for SChool of Acrchive: 
+	Yet to start : This module was working as per requirement when I last worked. 
+5. The main photo banner of home page of website are showing in streched forms: 
+	Solved: Photos must be in 990x300 ration. otherwise it will automatically cropped to maintain ratio. 
+6. The announcement banner are showings the old announcements. 
+	Solved: Ristrict in View to show only that whose expry date is greater then equal to current_date. 
+##4 What option shuld be visible to dedicated user?
+##3 
+14-Mar-18
+1) Gallery limit 10 
+
+2) Next Prev not working
+
+3) Announcement Archival. 
+
+4) Broken link 
+
+5) Photo Gallery design issue..
+
+6) 
+
+17-Mar-2018
+Grant http://nationalarchives.nic.in/content/grant-aid
+
+RAJGHAT(45.115.99.20)
+==========
+1.remove login/registeration fron top.
+Done!
+2.disable hindi from site./remove option from top also.
+Done!
+3.Modify photo gallery page .
+Done!
+link added to menu. 
+4.Whats New should work smoothly.
+ Done!
+5. Contact Us  -
+	Done!
+
+17-Mar-2018
+6. Thumbnail size chaged
+7. Media Gallery link changed to new gallery. 
+29-Mar-2018
+Logo should be clickable. 
+
+Footer message bottom margin reduced to 5px. 
+Contact Us border color(white) -- need to remove. 
+
+
+FSSAI
+=======
+Flipbook - TOC not working. 
+	: need source code
+
+
+STQC
+=======
+Task details yet  to be provided.
+(latst source code need to be downloaded to start work.)
+
+
+14:Mar:2018
+
+RAV
+=====
+ 
+
+1. The side menus are not working properly.
+Quick Link: 
+Admission to Courses page created 
+2. The page menu should be highlighted.
+Done!
+
+3. The homepage design need to rectify e.g. each section should have proper spacing and buttons.
+	Rename Read More ---> to --> View all(same as other)
+	 ###
+5. In login page we need to remove menu section from left side.
+   Done!
+   
+6. Every start and stop button should have properly icon and working.
+	Done!
+	
+7. Photo galley and video section should be properly design and working.
+   CSS issue will do letter.
+   
+8. Pages are redirecting to the homepage e.g. main menu event>>seminar
+   Done! -- blank page created
+9. When we click on any main menu (left menus) it should be highlighted.
+   Duplicate #2
+
+10. Other link icon’s (images) are not coming in the footer. E.g. http://www.ennoreport.gov.in/content/
+    Image was not avialbe on server server.  -- Done!
+11. Content section and footer should have proper spacing in between.
+    Done! -- added 10px margin from top
+12. Screen reader option should be on the top of the website instead bottom.
+	?? Where to move in TOP ?? 
+13. Last updated date, time and visitor count should be working properly at the footer
+
+14. Increase limit of main banner on the website.
+	How Much ??  Done -- (10 max)
+15. Search should be working properly.
+	What is the issue ??? it is working fine1
+16. In site map page we need to hide side menu listing.
+	Done!
+17. Sitemap should have in sequential order (Top menu, right menu, footer menu)
+<?php 
+
+//var_export(variable_get('site_map_show_menus', array()));
+
+variable_set('site_map_show_menus', array (
+ 'main-menu' => 'main-menu',
+
+ 'menu-home' => 'menu-home',
+  'menu-footer-menu' => 'menu-footer-menu',
+ 'menu-breadcrumb-menu' => 0,
+ 'menu-dashboard-menu' => 0,
+ 'devel' => 0, 
+'management' => 0,
+ 'navigation' => 0,
+ 'menu-quick-links' => 0,
+ 'user-menu' => 0,
+));
+
+?>
+array ( 'menu-footer-menu' => 'menu-footer-menu', 'menu-home' => 'menu-home', 'main-menu' => 'main-menu', 'menu-breadcrumb-menu' => 0, 'menu-dashboard-menu' => 0, 'devel' => 0, 'management' => 0, 'navigation' => 0, 'menu-quick-links' => 0, 'user-menu' => 0, )
+
+18. There should be a proper “Tool tip” content on each button and section.
+	Done!
+	
+19. Breadcrumb is not proper coming on search and other pages
+    Breadcrumb is working good on search page. 
+20. On theme change orange colour of “News & Publication” is not changing.
+	Done!
+21. There should be a coming soon page for each menu
+	Done! 
+22. Feedback should be working properly as Alert message is not displaying and all the feedback should be manageable from admin panel to send reply.
+	Will do letter.... 
+23. Print button is not working properly
+	Working -- nothing to do.
+24. “View all “and read more should be symmetric on all the section.
+	Done!
+25. A latest update message strip is required under banner e.g. http://www.ennoreport.gov.in/content/
+	What should be the content for strip?? 
+	
+26. The content of news & publication, gallery and reports are not coming properly.
+	What is the issue ?? 
+27. The copyright message should be centre align and visitor count and last updated date and time should be left and right side
+	Done!
+28. Zoom of the image should be working properly under image gallery.
+	
+29. Left menus should have heading “Main menu” or “Important Menu’s”
+	??? where ?? 
+30. Achieve section should be properly display the archived case report, media gallery, news and publication, latest update, recruitment, circular etc. 
+
+
+nff
+	$S$DGIMpf75COxlcYDJHan0EUQhgL/cWt6vbbaq93sTAqzS6DkZ00nk
