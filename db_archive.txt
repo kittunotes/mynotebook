@@ -1,0 +1,26 @@
+
+if [[ $# -lt 3 ]] ; then
+    echo 'Usages: ./db_script.sh DATABASE_NAME OLD_TABLE_NAME NEW_TABLE_NAME'
+    exit 1
+fi
+
+echo "TOTAL RECORDS IN TABLE "
+
+sudo mysql  -u uatappuser -p'U@Tapp#$123' -h 100.70.177.139 -e " select count(*) from $1.$2 "
+
+echo "TAKING DUMP...Without Data $1.$2"
+sudo mysqldump  -u uatappuser -p'U@Tapp#$123' -h 100.70.177.139 --no-data $1  $2 >  ./$1_$2.sql
+
+echo " Rename Table (Drop new table if already exists) "
+#sudo mysql  -u uatappuser -p'U@Tapp#$123' -h 100.70.177.139 -e " DROP TABLE IF EXISTS $1.$3 "
+sudo mysql  -u uatappuser -p'U@Tapp#$123' -h 100.70.177.139 -e " ALTER TABLE $1.$2 RENAME TO $1.$3 "
+
+echo "Create New Table "
+
+sudo mysql -u uatappuser -p'U@Tapp#$123' -h 100.70.177.139   $1  < ./$1_$2.sql
+
+
+echo "TAke dupm of archival data .. from renamed table (this will not block existing process"
+sudo mysqldump  -u uatappuser -p'U@Tapp#$123' -h 100.70.177.139 $1 $3  | gzip > /home/gemadmin/$1_$2_$(date +"%m_%d_%Y_%H_%M").sql.gzip
+
+echo "TURNCATING OLD DATA "
