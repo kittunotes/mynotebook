@@ -13,3 +13,276 @@ Register on  Heroku :
 https://signup.heroku.com/account
 akverma.ktr@gmail.com
 KJ...34
+
+
+Ruby on Web : 
+==================
+We’ll begin by installing a self-contained piece of Ruby software, known as a Ruby gem, called sinatra.
+osboxes@osboxes:~$ printf "install: --no-rdoc --no-ri\nupdate:  --no-rdoc --no-ri\n" >> ~/.gemrc
+osboxes@osboxes:~$ 
+osboxes@osboxes:~$ 
+osboxes@osboxes:~$ 
+osboxes@osboxes:~$ cat .gemrc 
+install: --no-rdoc --no-ri
+update:  --no-rdoc --no-ri
+osboxes@osboxes:~$ gem install sinatra
+Fetching: rack-2.0.5.gem (100%)
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /var/lib/gems/2.5.0 directory.
+osboxes@osboxes:~$ sudo gem install sinatra
+[sudo] password for osboxes: 
+Fetching: rack-2.0.5.gem (100%)
+Successfully installed rack-2.0.5
+Fetching: tilt-2.0.8.gem (100%)
+Successfully installed tilt-2.0.8
+Fetching: rack-protection-2.0.4.gem (100%)
+Successfully installed rack-protection-2.0.4
+Fetching: mustermann-1.0.3.gem (100%)
+Successfully installed mustermann-1.0.3
+Fetching: sinatra-2.0.4.gem (100%)
+Successfully installed sinatra-2.0.4
+5 gems installed
+osboxes@osboxes:~$ 
+
+
+
+https://fierce-peak-43568.herokuapp.com/
+
+
+
+osboxes@osboxes:~/ruby_tutorial$ git pull origin master
+From gitlab.com:akvermaktr/ruby_tutorial
+ * branch            master     -> FETCH_HEAD
+fatal: refusing to merge unrelated histories
+osboxes@osboxes:~/ruby_tutorial$ git branch
+* master
+osboxes@osboxes:~/ruby_tutorial$ git fetch --all
+Fetching origin
+osboxes@osboxes:~/ruby_tutorial$ git reset --hard origin/master
+HEAD is now at 8f93aaf Initial commit
+osboxes@osboxes:~/ruby_tutorial$ git status
+On branch master
+nothing to commit, working tree clean
+osboxes@osboxes:~/ruby_tutorial$ ls
+README.md
+osboxes@osboxes:~/ruby_tutorial$ vi hello_app.rb
+osboxes@osboxes:~/ruby_tutorial$ ruby hello_app.rb 
+[2018-10-10 06:33:57] INFO  WEBrick 1.4.2
+[2018-10-10 06:33:57] INFO  ruby 2.5.1 (2018-03-29) [x86_64-linux-gnu]
+== Sinatra (v2.0.4) has taken the stage on 4567 for development with backup from WEBrick
+[2018-10-10 06:33:57] INFO  WEBrick::HTTPServer#start: pid=22105 port=4567
+127.0.0.1 - - [10/Oct/2018:06:34:04 -0400] "GET / HTTP/1.1" 200 13 0.0075
+127.0.0.1 - - [10/Oct/2018:06:34:04 EDT] "GET / HTTP/1.1" 200 13
+- -> /
+^C== Sinatra has ended his set (crowd applauds)
+[2018-10-10 06:34:08] INFO  going to shutdown ...
+[2018-10-10 06:34:08] INFO  WEBrick::HTTPServer#start done.
+osboxes@osboxes:~/ruby_tutorial$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	hello_app.rb
+
+nothing added to commit but untracked files present (use "git add" to track)
+osboxes@osboxes:~/ruby_tutorial$ git add .
+osboxes@osboxes:~/ruby_tutorial$ git commit -m ' hello world ' 
+[master db83bcd]  hello world
+ 1 file changed, 6 insertions(+)
+ create mode 100644 hello_app.rb
+osboxes@osboxes:~/ruby_tutorial$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 334 bytes | 334.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To gitlab.com:akvermaktr/ruby_tutorial.git
+   8f93aaf..db83bcd  master -> master
+osboxes@osboxes:~/ruby_tutorial$ vi hello_app.rb
+osboxes@osboxes:~/ruby_tutorial$ ruby hello_app.rb 
+Traceback (most recent call last):
+hello_app.rb:3:in `<main>': undefined method `get' for main:Object (NoMethodError)
+Did you mean?  gets
+               gem
+osboxes@osboxes:~/ruby_tutorial$ vi hello_app.rb
+osboxes@osboxes:~/ruby_tutorial$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   hello_app.rb
+
+no changes added to commit (use "git add" and/or "git commit -a")
+osboxes@osboxes:~/ruby_tutorial$ git checkout .
+osboxes@osboxes:~/ruby_tutorial$ git status
+On branch master
+nothing to commit, working tree clean
+osboxes@osboxes:~/ruby_tutorial$ heroku login
+heroku: Enter your login credentials
+Email: akverma.ktr@gmail.com
+Password: **************
+Logged in as akverma.ktr@gmail.com
+osboxes@osboxes:~/ruby_tutorial$ heroku keys:add
+Found an SSH public key at /home/osboxes/.ssh/id_rsa.pub
+? Would you like to upload it to Heroku? Yes
+Uploading /home/osboxes/.ssh/id_rsa.pub SSH key... done
+osboxes@osboxes:~/ruby_tutorial$ heroku create
+Creating app... done, ⬢ fierce-peak-43568
+https://fierce-peak-43568.herokuapp.com/ | https://git.heroku.com/fierce-peak-43568.git
+osboxes@osboxes:~/ruby_tutorial$ touch config.ru Gemfile
+osboxes@osboxes:~/ruby_tutorial$ vi config.ru 
+osboxes@osboxes:~/ruby_tutorial$ vi Gemfile 
+osboxes@osboxes:~/ruby_tutorial$ sudo gem install bundler
+[sudo] password for osboxes: 
+Sorry, try again.
+[sudo] password for osboxes: 
+Fetching: bundler-1.16.6.gem (100%)
+Successfully installed bundler-1.16.6
+1 gem installed
+osboxes@osboxes:~/ruby_tutorial$ sudo bundle install
+Don't run Bundler as root. Bundler can ask for sudo if it is needed, and
+installing your bundle as root will break this application for all non-root
+users on this machine.
+
+[!] There was an error parsing `Gemfile`: syntax error, unexpected tIDENTIFIER, expecting end-of-input - get 'sinatra' 
+     ^~~~~~~. Bundler cannot continue.
+
+ #  from /home/osboxes/ruby_tutorial/Gemfile:2
+ #  -------------------------------------------
+ #  source 'https://rubygems.org
+ >  get 'sinatra' 
+ #  
+ #  -------------------------------------------
+osboxes@osboxes:~/ruby_tutorial$  bundle install
+
+[!] There was an error parsing `Gemfile`: syntax error, unexpected tIDENTIFIER, expecting end-of-input - get 'sinatra' 
+     ^~~~~~~. Bundler cannot continue.
+
+ #  from /home/osboxes/ruby_tutorial/Gemfile:2
+ #  -------------------------------------------
+ #  source 'https://rubygems.org
+ >  get 'sinatra' 
+ #  
+ #  -------------------------------------------
+osboxes@osboxes:~/ruby_tutorial$ vi Gemfile 
+osboxes@osboxes:~/ruby_tutorial$ vi 
+config.ru     Gemfile       .git/         hello_app.rb  README.md
+osboxes@osboxes:~/ruby_tutorial$ vi config.ru 
+osboxes@osboxes:~/ruby_tutorial$ ls
+config.ru  Gemfile  hello_app.rb  README.md
+osboxes@osboxes:~/ruby_tutorial$ vi hello_app.rb 
+osboxes@osboxes:~/ruby_tutorial$ vi config.ru 
+osboxes@osboxes:~/ruby_tutorial$ vi Gemfile 
+osboxes@osboxes:~/ruby_tutorial$ gem install bundler
+Fetching: bundler-1.16.6.gem (100%)
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /var/lib/gems/2.5.0 directory.
+osboxes@osboxes:~/ruby_tutorial$ sudo gem install bundler
+Successfully installed bundler-1.16.6
+1 gem installed
+osboxes@osboxes:~/ruby_tutorial$ bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Resolving dependencies...
+Using bundler 1.16.6
+Using mustermann 1.0.3
+Using rack 2.0.5
+Using rack-protection 2.0.4
+Using tilt 2.0.8
+Using sinatra 2.0.4
+Bundle complete! 1 Gemfile dependency, 6 gems now installed.
+Use `bundle info [gemname]` to see where a bundled gem is installed.
+osboxes@osboxes:~/ruby_tutorial$ ls
+config.ru  Gemfile  Gemfile.lock  hello_app.rb  README.md
+osboxes@osboxes:~/ruby_tutorial$ ll
+total 32
+drwxr-xr-x  3 osboxes osboxes 4096 Oct 10 06:50 ./
+drwxr-xr-x 29 osboxes osboxes 4096 Oct 10 06:49 ../
+-rw-r--r--  1 osboxes osboxes   47 Oct 10 06:48 config.ru
+-rw-r--r--  1 osboxes osboxes   44 Oct 10 06:49 Gemfile
+-rw-r--r--  1 osboxes osboxes  325 Oct 10 06:50 Gemfile.lock
+drwxr-xr-x  8 osboxes osboxes 4096 Oct 10 06:39 .git/
+-rw-r--r--  1 osboxes osboxes   54 Oct 10 06:35 hello_app.rb
+-rw-r--r--  1 osboxes osboxes   17 Oct 10 06:31 README.md
+osboxes@osboxes:~/ruby_tutorial$  git add -A
+osboxes@osboxes:~/ruby_tutorial$ git commit -m "Add deployment configuration"
+[master 95340ce] Add deployment configuration
+ 3 files changed, 26 insertions(+)
+ create mode 100644 Gemfile
+ create mode 100644 Gemfile.lock
+ create mode 100644 config.ru
+osboxes@osboxes:~/ruby_tutorial$ git push -u heroku master
+Counting objects: 11, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (11/11), 1.16 KiB | 170.00 KiB/s, done.
+Total 11 (delta 0), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Ruby app detected
+remote: -----> Compiling Ruby/Rack
+remote: -----> Using Ruby version: ruby-2.4.4
+remote: -----> Installing dependencies using bundler 1.15.2
+remote:        Running: bundle install --without development:test --path vendor/bundle --binstubs vendor/bundle/bin -j4 --deployment
+remote:        Warning: the running version of Bundler (1.15.2) is older than the version that created the lockfile (1.16.6). We suggest you upgrade to the latest version of Bundler by running `gem install bundler`.
+remote:        Fetching gem metadata from https://rubygems.org/.........
+remote:        Fetching version metadata from https://rubygems.org/.
+remote:        Using bundler 1.15.2
+remote:        Fetching mustermann 1.0.3
+remote:        Fetching rack 2.0.5
+remote:        Fetching tilt 2.0.8
+remote:        Installing mustermann 1.0.3
+remote:        Installing tilt 2.0.8
+remote:        Installing rack 2.0.5
+remote:        Fetching rack-protection 2.0.4
+remote:        Installing rack-protection 2.0.4
+remote:        Fetching sinatra 2.0.4
+remote:        Installing sinatra 2.0.4
+remote:        Bundle complete! 1 Gemfile dependency, 6 gems now installed.
+remote:        Gems in the groups development and test were not installed.
+remote:        Bundled gems are installed into ./vendor/bundle.
+remote:        Bundle completed (2.79s)
+remote:        Cleaning up the bundler cache.
+remote: -----> Detecting rake tasks
+remote: 
+remote: ###### WARNING:
+remote: 
+remote:        You have not declared a Ruby version in your Gemfile.
+remote:        To set your Ruby version add this line to your Gemfile:
+remote:        ruby '2.4.4'
+remote:        # See https://devcenter.heroku.com/articles/ruby-versions for more information.
+remote: 
+remote: ###### WARNING:
+remote: 
+remote:        No Procfile detected, using the default web server.
+remote:        We recommend explicitly declaring how to boot your server process via a Procfile.
+remote:        https://devcenter.heroku.com/articles/ruby-default-web-server
+remote: 
+remote: 
+remote: -----> Discovering process types
+remote:        Procfile declares types     -> (none)
+remote:        Default types for buildpack -> console, rake, web
+remote: 
+remote: -----> Compressing...
+remote:        Done: 19.5M
+remote: -----> Launching...
+remote:        Released v4
+remote:        https://fierce-peak-43568.herokuapp.com/ deployed to Heroku
+remote: 
+remote: Verifying deploy... done.
+To https://git.heroku.com/fierce-peak-43568.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'heroku'.
+osboxes@osboxes:~/ruby_tutorial$ git remote -v
+heroku	https://git.heroku.com/fierce-peak-43568.git (fetch)
+heroku	https://git.heroku.com/fierce-peak-43568.git (push)
+origin	git@gitlab.com:akvermaktr/ruby_tutorial.git (fetch)
+origin	git@gitlab.com:akvermaktr/ruby_tutorial.git (push)
+osboxes@osboxes:~/ruby_tutorial$ 
+
+
+
+
+
+
