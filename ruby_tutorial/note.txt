@@ -1,0 +1,15 @@
+Refrence Link : 
+https://www.railstutorial.org/book/beginning#sec-introduction
+
+Ruby on Web :
+https://www.learnenough.com/ruby-tutorial/hello_world/ruby_web/deployment
+
+Register on GitLab
+https://gitlab.com/
+akvermaktr
+K4
+
+Register on  Heroku : 
+https://signup.heroku.com/account
+akverma.ktr@gmail.com
+KJ...34
