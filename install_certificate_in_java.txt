@@ -1,0 +1,136 @@
+
+script -a
+
+
+##########################################################################################################
+#                                   All connections are monitored and recorded                           #
+#                          Disconnect IMMEDIATELY if you are not an authorized user!                     #
+##########################################################################################################
+[pmapdcadm@MUMGEMIDAAPPPROD11 ~]$ sudo su - root
+[root@MUMGEMIDAAPPPROD11 ~]# cd ^C
+[root@MUMGEMIDAAPPPROD11 ~]# ^C
+[root@MUMGEMIDAAPPPROD11 ~]# ^C
+[root@MUMGEMIDAAPPPROD11 ~]# cd /^C
+[root@MUMGEMIDAAPPPROD11 ~]# ^C
+[root@MUMGEMIDAAPPPROD11 ~]# java -version
+java version "1.8.0_151"
+Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
+[root@MUMGEMIDAAPPPROD11 ~]# cd /usr/java/jdk1.8.0_151/
+[root@MUMGEMIDAAPPPROD11 jdk1.8.0_151]# c j^C
+[root@MUMGEMIDAAPPPROD11 jdk1.8.0_151]# cd jre/lib/security/
+[root@MUMGEMIDAAPPPROD11 security]# keytool -import -alias FSSAI_SSL  -keystore cacerts -trustcacerts -file /home/pmapdcadm/FSSAI_SSL.cer
+Enter keystore password:
+Owner: CN=*.fssai.gov.in, OU=IT, O=Food Safety and Standards Authority of India, L=New Delhi, ST=Delhi, C=IN
+Issuer: CN=GeoTrust RSA CA 2018, OU=www.digicert.com, O=DigiCert Inc, C=US
+Serial number: 1e18087ae33706b74abadd57c87d9f7
+Valid from: Fri Jun 22 05:30:00 IST 2018 until: Sun Sep 20 17:30:00 IST 2020
+Certificate fingerprints:
+         MD5:  8A:98:71:F7:18:87:8F:73:16:14:92:B5:51:B8:BB:C7
+         SHA1: B1:1C:92:BA:DD:11:4A:2C:98:49:60:51:61:B8:6D:B2:B3:20:99:54
+         SHA256: 52:2C:6E:60:BE:DE:B9:35:BE:65:1A:E8:0F:5E:EF:C5:46:8B:E0:FE:3D:78:D2:6E:D1:3A:F1:20:E2:E6:67:BA
+Signature algorithm name: SHA256withRSA
+Subject Public Key Algorithm: 2048-bit RSA key
+Version: 3
+
+Extensions:
+
+#1: ObjectId: 1.3.6.1.4.1.11129.2.4.2 Criticality=false
+0000: 04 82 01 68 01 66 00 75   00 A4 B9 09 90 B4 18 58  ...h.f.u.......X
+0010: 14 87 BB 13 A2 CC 67 70   0A 3C 35 98 04 F9 1B DF  ......gp.<5.....
+0020: B8 E3 77 CD 0E C8 0D DC   10 00 00 01 64 26 70 4E  ..w.........d&pN
+0030: D7 00 00 04 03 00 46 30   44 02 20 08 D0 06 CF E2  ......F0D. .....
+0040: FC DA 09 F4 C1 17 BD EC   3E 61 1C E8 36 4B 23 E0  ........>a..6K#.
+0050: 70 7D 95 7D 0A 5A 7E 07   BF 96 44 02 20 01 07 8A  p....Z....D. ...
+0060: 3F C4 99 A8 99 17 E2 9B   0E 8B 56 64 82 50 1A 5D  ?.........Vd.P.]
+0070: 1F 55 D3 7D 51 49 1D 5F   11 B7 35 39 F0 00 75 00  .U..QI._..59..u.
+0080: 87 75 BF E7 59 7C F8 8C   43 99 5F BD F3 6E FF 56  .u..Y...C._..n.V
+0090: 8D 47 56 36 FF 4A B5 60   C1 B4 EA FF 5E A0 83 0F  .GV6.J.`....^...
+00A0: 00 00 01 64 26 70 4F 93   00 00 04 03 00 46 30 44  ...d&pO......F0D
+00B0: 02 1F 6E CC C9 A5 2B 56   1F AE DD 3B 91 3F A7 88  ..n...+V...;.?..
+00C0: 72 D2 22 8A B8 AB A8 19   BD E9 CD BA FA E4 77 1E  r."...........w.
+00D0: BC 02 21 00 E2 3A 63 96   CE 8A 4B 63 86 AC DC F3  ..!..:c...Kc....
+00E0: DE C0 47 67 37 D1 83 A7   A8 95 A8 97 2B 14 C0 D0  ..Gg7.......+...
+00F0: B3 43 35 51 00 76 00 EE   4B BD B7 75 CE 60 BA E1  .C5Q.v..K..u.`..
+0100: 42 69 1F AB E1 9E 66 A3   0F 7E 5F B0 72 D8 83 00  Bi....f..._.r...
+0110: C4 7B 89 7A A8 FD CB 00   00 01 64 26 70 4F BA 00  ...z......d&pO..
+0120: 00 04 03 00 47 30 45 02   21 00 AA EB C5 BC 84 45  ....G0E.!......E
+0130: 8E 5A 27 32 79 0F 4E 69   C7 3D E6 FD 36 2A 74 2B  .Z'2y.Ni.=..6*t+
+0140: EB E2 53 FC 5C FC 2B DA   DA 8A 02 20 6B 20 A3 5F  ..S.\.+.... k ._
+0150: AE A3 B3 34 07 51 2A CC   9A EA D6 BB BF 7F 3C 1C  ...4.Q*.......<.
+0160: 75 11 DA 78 9D 7F BB F6   CC E2 B7 93              u..x........
+
+
+#2: ObjectId: 1.3.6.1.5.5.7.1.1 Criticality=false
+AuthorityInfoAccess [
+  [
+   accessMethod: ocsp
+   accessLocation: URIName: http://status.geotrust.com
+,
+   accessMethod: caIssuers
+   accessLocation: URIName: http://cacerts.geotrust.com/GeoTrustRSACA2018.crt
+]
+]
+
+#3: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: 90 58 FF B0 9C 75 A8 51   54 77 B1 ED F2 A3 43 16  .X...u.QTw....C.
+0010: 38 9E 6C C5                                        8.l.
+]
+]
+
+#4: ObjectId: 2.5.29.19 Criticality=false
+BasicConstraints:[
+  CA:false
+  PathLen: undefined
+]
+
+#5: ObjectId: 2.5.29.31 Criticality=false
+CRLDistributionPoints [
+  [DistributionPoint:
+     [URIName: http://cdp.geotrust.com/GeoTrustRSACA2018.crl]
+]]
+
+#6: ObjectId: 2.5.29.32 Criticality=false
+CertificatePolicies [
+  [CertificatePolicyId: [2.16.840.1.114412.1.1]
+[PolicyQualifierInfo: [
+  qualifierID: 1.3.6.1.5.5.7.2.1
+  qualifier: 0000: 16 1C 68 74 74 70 73 3A   2F 2F 77 77 77 2E 64 69  ..https://www.di
+0010: 67 69 63 65 72 74 2E 63   6F 6D 2F 43 50 53        gicert.com/CPS
+
+]]  ]
+  [CertificatePolicyId: [2.23.140.1.2.2]
+[]  ]
+]
+
+#7: ObjectId: 2.5.29.37 Criticality=false
+ExtendedKeyUsages [
+  serverAuth
+  clientAuth
+]
+
+#8: ObjectId: 2.5.29.15 Criticality=true
+KeyUsage [
+  DigitalSignature
+  Key_Encipherment
+]
+
+#9: ObjectId: 2.5.29.17 Criticality=false
+SubjectAlternativeName [
+  DNSName: *.fssai.gov.in
+  DNSName: fssai.gov.in
+]
+
+#10: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: A4 44 67 F5 50 5E C4 EE   74 B5 3F 4E 18 66 71 7E  .Dg.P^..t.?N.fq.
+0010: 7B A7 AD 8C                                        ....
+]
+]
+
+Trust this certificate? [no]:  yes
+Certificate was added to keystore
+[root@MUMGEMIDAAPPPROD11 security]# ^C
