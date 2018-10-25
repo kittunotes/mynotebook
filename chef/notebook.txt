@@ -1,0 +1,23 @@
+ 
+ 
+ Chef Resources
+ ===============
+ A Chef resource describes one part of the system, such as a file or a package. A Chef recipe is a file that groups related resources, such as everything needed to configure a web server, database server, or a load balancer.
+ 
+  * Message of the Day (MOTD) file 
+  file '/tmp/motd' do
+    content 'hello chef'        #Add content to new tmp file. /tmp/motd
+    action :delete              #Delete File 
+  end
+  
+Resources have actions
+    example ( action :delete              #Delete File) 
+Recipes organize resources
+
+Configure a package and service
+===============================
+Like files, packages and services are also types of resources. Chef applies resources in the order you specify.
+exmple : install httpd service 
+package 'httpd' # 
+        #We don't need to specify an action because :install is the default  
+$ sudo chef-client --local-mode webserver.rb  
