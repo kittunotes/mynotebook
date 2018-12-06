@@ -1,0 +1,11 @@
+Bid DB issue on 87
+
+Dashboard 100/99 appliction/server issue
+
+Notification app server DB connnection issue. 
+
+Admin File upload issue
+
+BRD Repository 
+
+
