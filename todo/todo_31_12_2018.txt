@@ -3,4 +3,16 @@
 3) MySQL Replication 
 4) BlackDuck Installation and Demo
 5) get server access to 2.0  and update the code. 
+6) Contract mangement Logs: 
+      -rw-rw-r--    1 jbossadmin jbossadmin  5248127 Dec 31 01:00 contractmanagement-serverLog.log$2018-12-31$03
+      -rw-rw-r--    1 jbossadmin jbossadmin  5246463 Dec 31 01:58 contractmanagement-serverLog.log$2018-12-31$02
+      -rw-rw-r--    1 jbossadmin jbossadmin  5246617 Dec 31 04:06 contractmanagement-serverLog.log$2018-12-31$01
+      -rw-rw-r--    1 jbossadmin jbossadmin  2861356 Dec 31 11:33 contractmanagement-serverLog.log
+      -rw-rw-r--    1 jbossadmin jbossadmin        0 Dec 31 12:00 ctserverLog.log
+      -rw-rw-r--    1 jbossadmin jbossadmin        0 Dec 31 12:00 ctperformanceLog.log
+      -rw-rw-r--    1 jbossadmin jbossadmin        0 Dec 31 12:00 ctdbLog.log
+      sftp> pwd
+      Remote working directory: /opt/ContractMgmt/logs
+      sftp>
+
 
