@@ -2,3 +2,5 @@
 2) Home page Deployment 
 3) MySQL Replication 
 4) BlackDuck Installation and Demo
+5) get server access to 2.0  and update the code. 
+
