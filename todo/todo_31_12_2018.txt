@@ -1,0 +1,4 @@
+1) IFMS Deployment
+2) Home page Deployment 
+3) MySQL Replication 
+4) BlackDuck Installation and Demo
