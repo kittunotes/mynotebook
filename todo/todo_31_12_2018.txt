@@ -1,4 +1,5 @@
 1) IFMS Deployment
+      Done : faceing some issue in Curl
 2) Home page Deployment 
 3) MySQL Replication 
 4) BlackDuck Installation and Demo
