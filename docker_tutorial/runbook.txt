@@ -1,2 +1,15 @@
+
 docker pull codekoalas/drupal8
+docker run -d -p 80:80 codekoalas/drupa8
+
+docker images -q # show image id 
+
+docker images -q | xargs docker run -d -p 80:80 
+
+sudo docker run codekoalas/drupa8 –it /bin/bash
+
+
+
+Drupal installation 
+=======================
 
