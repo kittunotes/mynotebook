@@ -13,3 +13,4 @@ sudo docker run codekoalas/drupa8 –it /bin/bash
 Drupal installation 
 =======================
 
+Docker Compose is a complementary system which helps you link together individual Docker containers so they can work together. 
