@@ -26,5 +26,42 @@ tcpdump -i eno33559296  -nnXSs 0 'port 80'
   -H 'cache-control: no-cache' \
   -d '{
   
+  ## SCP recurrsively and variable date 
+  sudo scp -rp  jbossadmin@100.70.177.137:/home/jbossadmin/$(date +"%m-1_%d_%Y") . 
   
+  ## Jboss EAP cli commands 
+  ./jboss-cli.sh --connect controller=100.114.2.75:9990 
+  
+  deployment-info --server-group=FulfilmentGroup 
+  /server-group=FulfilmentGroup/deployment=Fulfilment_03_01_2019_06_45PM.war:undeploy
+  deploy /home/jbossadmin/Fulfilment_09_01_2019_04_50PM.war --server-groups=FulfilmentGroup
+  /server-group=FulfilmentGroup:start-servers
+  
+  
+  #Jboss EAP Service restart
+  pkill -9 -f java
+   ps -ef | grep java
+  
+  #Curl 
+  0,30 * * * * /opt/McAfee/agent/scripts/ma checkhealth >/dev/null 2>/dev/null
+  
+  
+  
+  #yUM
+    421  yum clean all
+  422  yum repolist
+  423  yum list updates
+  424  yum check-update
+  425  cat /etc/redhat-release
+  426  subscription-manager register
+  427  subscription-manager attach --pool=8a85f98c611c918101611db086941bbd
+  428  yum check-update
+  429  yum repolist
+  430  yum install httpd
+  431  history
+  
+  
+## Call ssh remotly or using Jenkins 
+sudo ssh gemadmin@100.114.2.97 -tt 'sudo service httpd stop'
+sudo ssh gemadmin@100.114.2.98 -tt 'sudo service httpd stop'
   
