@@ -17,4 +17,14 @@ tcpdump -i eno33559296  -nnXSs 0 'port 80'
  ## Create ZIP with include and exclude option 
  zip  -r home_ffmt_arx_bid.zip  uat-gem-portal sonar-fulfilment-web uat-gem-arx/SOURCE  uat-gem-bidplus uat-gem-bidplus/.git/**\* uat-gem-portal/.git/**\* uat-gem-portal/resources/**\*
  
+ 
+ ## Curl with Proxy 
+ curl -v --proxy fp.gem.gov.in -X POST \
+  http://somesite.com/endpoint \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 24fb7975-5a68-4b7f-aba7-f214ad871e1e' \
+  -H 'cache-control: no-cache' \
+  -d '{
+  
+  
   
