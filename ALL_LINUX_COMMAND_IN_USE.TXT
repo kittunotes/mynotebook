@@ -1,0 +1,20 @@
+## TCP Dump : checks packes passing through a given port. 	
+tcpdump -i any -s 0 -A 'tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x504F5354'
+How to capture only HTTP POST requests Incoming to port 80 ( Apache/NGINX)
+tcpdump -i eno33559296 -s 0 -A 'tcp dst port 8180 and tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x504F5354'
+tcpdump -i eno33559296 -s 0 -A 'tcp dst port 443 and tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x504F5354'
+tcpdump -i eno33559296  -nnXSs 0 'port 80'
+
+
+## Upgrade PHP 
+ rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
+ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm	
+ rpm -qa | grep php
+ yum remove php-common
+ yum install -y php56w php56w-opcache php56w-xml php56w-mcrypt php56w-gd php56w-devel php56w-mysql php56w-intl php56w-mbstring
+ service httpd restart
+ 
+ ## Create ZIP with include and exclude option 
+ zip  -r home_ffmt_arx_bid.zip  uat-gem-portal sonar-fulfilment-web uat-gem-arx/SOURCE  uat-gem-bidplus uat-gem-bidplus/.git/**\* uat-gem-portal/.git/**\* uat-gem-portal/resources/**\*
+ 
+  
