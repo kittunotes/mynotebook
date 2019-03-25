@@ -1,1 +1,22 @@
 sudo chcon -R -t httpd_sys_rw_content_t files
+
+
+
+RHEL and Fedora (among others) may have SELinux security enable. This will mask whatever the regular Unix permissions are showing. If this is enabled and there is not a "rw" in the context for the files/ directory it will not be writable no matter which group, user or unix permissions are granted. To see these "hidden" settings:
+
+ls -laZ sites/default
+
+drwxr-sr-x. apache www unconfined_u:object_r:httpd_sys_content_t:s0 .
+drwxr-xr-x. apache www unconfined_u:object_r:httpd_sys_content_t:s0 ..
+-rwxr-sr-x. apache www unconfined_u:object_r:httpd_sys_content_t:s0         default.settings.php
+drwxrwsr-x. apache www unconfined_u:object_r:httpd_sys_content_t:s0 files
+-rwxr-sr-x. apache www unconfined_u:object_r:httpd_sys_rw_content_t:s0 settings.php
+
+To change the settings on files/ so it is writable:
+
+sudo chcon -R -t httpd_sys_rw_content_t files
+
+When the install is done reset the context using the same command with the original "http_sys_content_t" context.
+
+fyi - This command will also be necessary to enable writes when installing themes under the "all" directory.
+
