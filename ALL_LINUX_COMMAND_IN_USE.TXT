@@ -64,4 +64,8 @@ tcpdump -i eno33559296  -nnXSs 0 'port 80'
 ## Call ssh remotly or using Jenkins 
 sudo ssh gemadmin@100.114.2.97 -tt 'sudo service httpd stop'
 sudo ssh gemadmin@100.114.2.98 -tt 'sudo service httpd stop'
-  
+
+
+## Date format in bash 
+
+date -d '20121212' +'%Y-%m-%d'
