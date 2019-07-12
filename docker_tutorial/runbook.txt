@@ -13,4 +13,393 @@ sudo docker run codekoalas/drupa8 –it /bin/bash
 Drupal installation 
 =======================
 
-Docker Compose is a complementary system which helps you link together individual Docker containers so they can work together. 
+Docker Compose is a complementary system which helps you link together individual Docker containers so they can work together.
+
+
+Docker Images Build
+============
+	
+Docker run -it redis
+
+Why docker 
+	Easy to install software. 
+	
+	Container -- Running Programm. own isolated set of hardware resources. mem/net/hd/
+	
+	Docker CLI reach Docker hub and downlaod Image. 
+
+What Docker IS?
+	Docker Cliet -- Help to intract with Docker Server(Docker Daemon)
+	
+Container
+	OS intro: ApplicationProgramm ---(system call)--> kernel --> {CPU,MEMory,HD}
+	NameSpace - Isolation of Resources
+	ControlGroups(cgroups) -controlles the amount of resources that a prrticular process can use. 
+Image - Kind of Snapshot of FileSystem along with very basic command. 
+
+docker run 
+	docker run busybox [new command ]
+	docker run hello-world ls
+		error
+	docker run busybox ls 
+		dispaly list of files.
+docker ps : display running containers
+			
+
+			
+Container Life Cycle: 			\
+	docker run = (docker create + docker start)
+				create means place solftware in FileSystem.
+				
+		docker create hello-world | docker start -a (without -a will )		
+		docker start <containerid> <new override commnad will not work 2nd time> 
+
+docker system prune  # Delete cached images  
+docker ps -all 				#will not show any container. 
+
+docker logs <container_id> 		#mostly used in debugging. 
+
+docker stop <container_id> 
+docker kill <container_id>
+
+
+==============
+Redis installaiton and cli on contaner. 
+
+docker run redis
+
+docker exec  -it <container_id> <command> 
+			 -i  redirect terminal to STD 
+			 -t nicely formatted. like suggestion of command | Prompt. 
+
+==============
+
+docker exec -it <contaner-id> sh   			#terminal access 
+
+=============
+docker run -it busybox sh   				#craete a container and redirect to shell. 
+
+
+Createing Images
+================
+create a file named "Dockerfile" ->>> send to -->>> Docker client
+	is a list of command nothing else. 
+	a) Specify Base image.
+	b) run come command to install additional command 
+	c) startup program.
+Example create Redis Image  rom scratch. 
+	mkdir redis-image 
+	cd redis-image
+	vi Dockerfile 
+		FROM alpine					#ALPINE is light weight operating system. 	
+		RUN apk add --update redis  # package manager automaticaly downlado softwre redis and install. (Creates temp contaner with alpine and  downlaod solftware.)
+		CMD ["redis-server"]
+		
+	docker build .   				#this will give some "Sucessfullly build ID"  of Image. 
+	docker run ID 					#start the container -- redis is now ready to accesspt connection . 
+	A CONTANER IS LIKE A NEW COMPUTER WITHOUT OPERATIONG SYSTEM. 
+	
+Tag A image (-t <tag-name>)
+============
+convention for tag name :
+	docker build -t abhishek/redis-server:latest .  		#[.]dot is build context.
+Manual Image generateion[Optional]
+
+
+Project Create nodejs app with docker.
+============================
+  1 #specify a fiase image
+  2 FROM node:alpine
+  3
+  4 #RUN apk add --update node
+  5 #RUN apk add --update npm
+  6 WORKDIR /usr/app
+  7 RUN npm install
+  8
+  9
+ 10 CMD ["npm" , "start"]
+ 
+ EXPOSE PORT : 
+ 
+  docker run -P 8080:8080 abhishek/node
+   docker run -P 5000:8080 abhishek/node 		
+> @ start /
+> node  index.js
+
+Loiten on port 80808
+	Prob: avoid complete requild image in case of some source code chages in appliaiton. 
+	
+	Soln: 
+		break COPY OPERATION. Only copy the bare minimum for each sucess step. 
+
+
+	
+
+new project (Advance);
+	Visitor Counter -------> [Node , Redis ] xx
+	Visitor Counter -------> [Node, Node ....  ] [Redis]
+	
+	prob: node not able to connect redis. 
+	We will use docker-compose(same as cli but repeatiative command of docker cli, Also help in Networking in container. )
+	
+  1 version: '3'
+  2 services:
+  3   redis-server:
+  4       images: 'redis'
+  5   node-app:
+  6       build: .
+  7       ports:
+  8         - "8081:8081
+
+  
+    1 const express = require('express');
+  2 const redis  = require('redis');
+  3
+  4 const app = express();
+  5 const client = redis.createClient({
+  6   host: 'redis-server',
+  7   port: 6307
+  8 });
+  9
+ 10 client.set('visits', 0);
+ 11
+ 12 app.get('/', (req, res) => {
+ 13   client.get('visits', (err, visits) => {
+ 14     res.send('Number of visits is ' + visits);
+ 15     client.set('visits', parseInt(visits) +1);
+ 16
+ 17   });
+ 18 });
+
+ docker run image == docker-compose up 
+ 
+ docker build . + docker run image  == docker-compose --build 
+ 
+ 
+ RUN DOCKER IN BACKGROUP (-d)
+ docker run -d image_name   ==  docker-compose up 					#start container 
+ 
+ Doccker restart polity. 
+ =================
+	"no" 
+	always
+	on-failure
+	unless-stop
+ 
+ 
+ Docker in production 
+ ================
+ 
+ developer working on feature branch 
+ create pull request  to merge wtih master 
+ workflow 
+ Travis 
+ AWS Cloud
+
+			Docker is not involved in Deploymnt. 
+			is tool for normal development flow. 
+			What applciation is running in Docker is important. like Ruby/Php/java
+
+abhishek1.v@N10458 MINGW64 ~/Downloads
+$ ssh -i "ec21.pem" ubuntu@ec2-18-223-111-73.us-east-2.compute.amazonaws.com
+
+
+create empty react projct. 		
+=========================
+npm install -g create-react-app 
+
+create-reacrt-app frontend     					# create new app in <frontend> folder 
+	
+	command will use in future : 
+		npm run starts							#start development server. and poing to browser. 
+			run test							
+			run build 
+ Directory of D:\docker_tutorial\docker_tutorial\react
+
+19-03-2019  06.33 PM    <DIR>          .
+19-03-2019  06.33 PM    <DIR>          ..
+19-03-2019  06.38 PM    <DIR>          frontend
+               0 File(s)              0 bytes
+               3 Dir(s)  90,370,760,704 bytes free
+
+D:\docker_tutorial\docker_tutorial\react>cd frontend
+
+D:\docker_tutorial\docker_tutorial\react\frontend>ls
+ PASS  src/App.test.js
+  √ renders without crashing (24ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        7.95s
+Ran all test suites related to changed files.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press q to quit watch mode.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press Enter to trigger a test run.
+
+
+
+D:\docker_tutorial\docker_tutorial\react\frontend>npm run build
+
+> frontend@0.1.0 build D:\docker_tutorial\docker_tutorial\react\frontend
+> react-scripts build
+
+Creating an optimized production build...
+Compiled successfully.
+
+File sizes after gzip:
+
+  36.79 KB  build\static\js\2.948d4d77.chunk.js
+  764 B     build\static\js\runtime~main.c5541365.js
+  714 B     build\static\js\main.6e21473b.chunk.js
+  540 B     build\static\css\main.20a774e9.chunk.css
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://bit.ly/CRA-deploy
+
+
+D:\docker_tutorial\docker_tutorial\react\frontend>
+
+
+
+==========================================================================
+create two Dockerfile 1) Development 2) Production 
+ 
+ Dockerfile.dev 
+ 
+ docker build -f Dockerfile.dev . 
+ 
+ docker run ID 
+ docker run -p 3000:3000 ID 
+ 
+ $ docker run -p 3000:3000 -v $(pwd):/app 1d465453a0a9  		#ERrror: /node_moduels not found . 
+							-v says map everything from pwd to /app. 
+
+		
+ 
+ Try to modify App.js withoug build using VOLUME 
+ 
+ docker run -p 3000:3000 -v /app/node_modules  -v $(pwd):/app 1d465453a0a9  #working 
+	
+REPLACE ABOVE LONG COMMAND WITH docker-compose.yml 
+
+version: '3'
+services:
+  web: 
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev				#Non-defalt dockerfile path
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app
+
+
+Execute TEST
+=============
+docker build -f Dockerfile.dev -t ahishek/react . 
+docker run -it abhishek/react npm start test 			#override default command CMD ["npm" , "run", "start"] with 'npm start test'  -- This will create new contaner. 
+		CAN i USE DOCKER-COMPSE FOR start test ? this will map volumes also. ??
+
+	method 1 : run with docker-compose and 
+			docker-compose up 
+			docker ps 
+			docker exec -it "ID" 'npm start test'
+	method 2: define new service in docker-composer file like WEB 
+			
+	docker attach <ID> 
+** EVERY NEW COMMAND(DEFAULT/OVERRIDE) CREATES NEW CONTAINER WITH DIFFERENT INDEPENDENT  VOLUMES
+	  
+Docker in Production. (using multi step build)
+=======================	  
+Create produciton verison of Dockerfile. with NginX
+FROM node:alpine as builder 
+WORKDIR '/app' 
+COPY package.json .  
+RUN npm install
+COPY . . 
+RUN npm run build
+FROM nginx 
+COPY --from=builder /app/build /usr/share/nginx/html	
+
+TravisCI
+=====
+.tavis.yml
+
+
+
+
+
+docker run akvermaktr/docker-react  npm run test  ## prob: never exit. 
+docker run akvermaktr/docker-react  npm run test -- --coverage 
+
+AWS deployment (Elastic Beanstalk)
+================
+	It monitors trafic
+	It creates LB automatically. 
+		connnected to Node 
+	it automatically scale everything for us. 
+
+add deply: in .travis.yml 
+deploy:
+
+http://dockerreact-env.peawmp5dcb.us-east-2.elasticbeanstalk.com/
+
+serach IAM in AWS. --- manager user access and encryption key. 
+
+create user : docker-react-travis-ci 
+secret : ieM99evsu/fZFXyq/RbF+umhZDb4ZRmzorcS/aJy 
+password : I1T%|]LFz$*g 
+
+Docker -- same  environment  for develoment,local, uat , produciton
+DockerCompose -- Networking between containers. 
+Docker Swarn/Kubernatics -- 
+
+Complex React Application 
+================
+
+Client
+
+
+worker 
+
+
+Server 
+docker build -f Dockerfile.dev  .
+
+
+
+docker-composer 
+version: '3'
+services:
+        postgres:
+                image: 'postgres:latest'
+        redis:
+                image: 'redis:latest'
+        server:
+                build:
+                        dockerfile: Dockerfile.dev
+                        context: ./server
+                volume:
+                        - /app/node_modules
+                        - ./server:/app
+
