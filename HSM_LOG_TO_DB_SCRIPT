@@ -8,3 +8,46 @@ echo "Parse log into SQL"
 python splitter.py  catalina.out-$(date +"%Y%m%d") > catalina.out-$(date +"%Y%m%d").sql
 echo "insert into mysql "
 mysql -u appuser -p'some password '  hsm_log < catalina.out-$(date +"%Y%m%d").sql
+
+
+splitter.py 
+===============
+####
+1) Read file  
+2) Stlit by string -------- 
+3) 
+####
+import re
+import sys
+
+f = open( sys.argv[1] ,"r")
+
+if f.mode == 'r':
+        contents =f.read()
+
+f.close()
+delimeter="--------------------------------------"
+i = 0
+for word in contents.split(delimeter):
+
+        #print word
+        if(re.findall(r'<ciphertext>(.*?)</ciphertext>', word)):
+                i = i + 1
+                ciphertext = re.findall(r'<ciphertext>(.*?)</ciphertext>', word)
+                keyname = re.findall(r'<keyname>(.*?)</keyname>', word)
+
+                pattern = re.compile(
+    "(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|"
+    "Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|"
+    "Dec(ember)?)\s+\d{1,2},\s+\d{4} \w+:\w+:\w+ \w+")
+
+
+
+                date_str  = pattern.search(word).group()
+
+                #print ciphertext
+                #print log_date
+                #print keyname
+                print "insert into gemlog (g_key, g_type, g_text, g_log_timestamp) values ('" + str(keyname[0]) + "', 2 , '" + str(ciphertext[0]) + "' ,  str_to_date('"+ str(date_str) +"', '%b %d, %Y %h:%i:%s %p'));";
+
+
