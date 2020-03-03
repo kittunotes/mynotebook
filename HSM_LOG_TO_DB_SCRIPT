@@ -1,0 +1,10 @@
+cd /opt/partlog
+echo "copy logarchive from tomcat"
+
+scp /opt/HSM/apache32Bit/logs/catalina.out-$(date +"%Y%m%d").gz  .
+echo "Extracting  Archive..."
+gzip   -d catalina.out-$(date +"%Y%m%d").gz
+echo "Parse log into SQL"
+python splitter.py  catalina.out-$(date +"%Y%m%d") > catalina.out-$(date +"%Y%m%d").sql
+echo "insert into mysql "
+mysql -u appuser -p'some password '  hsm_log < catalina.out-$(date +"%Y%m%d").sql
