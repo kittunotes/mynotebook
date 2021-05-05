@@ -1,5 +1,53 @@
 ELK
-Elastic Search  -- index and search 
-Logstash  -- parse log and send to Elastice search for aply machine learning.
+==========
+Elastic Search  -- index and search . This is NOSQL database. develop based on Lucence search engine. All data will be stored. 
+
+Logstash  -- Colection agent ... collect data various sources.  send data to Elastic seach to store. 
 Kibana -- UI/Dashbarod to visulize
-Beat 
+Beats  -- Similar to Logstash ... is not single but gorup of multiple software. collect data in real time. 
+          Beat can send directly to ES. or send it to Logstash for filtering. 
+          
+          Audit Beats
+          
+Beat ==> Logstash ==> Elastic Search ==> Kibana 
+
+
+If any error comes we can notify by #Slaks
+
+Features
+==========
+System Perfomance Monitorying. 
+Log Monitorying. 
+Performace Monitorying.
+Application Data Analysis. 
+Data Visulization. 
+
+
+====
+1) install nginx  :  to publicly access the Kibana
+  yum install nginx : 
+  runs on  port 80 
+  
+2) install elastic search 
+  wget link 
+  runs on port 9200 
+  
+ 3)  install kibana 
+     Create a file called kibana.repo in the /etc/yum.repos.d/
+
+     sudo yum install kibana
+     #check
+     ps -p 1
+
+    SysV init vs systemdedit
+    Kibana is not started automatically after installation. How to start and stop Kibana depends on whether your system uses SysV init or systemd (used by newer distributions). You can tell which is being used by running this command:
+
+    systemctl restart kibana.service
+    log path 
+    /var/log/kibana/kibana.log
+
+  
+3) install log stastack 
+
+install Kibana
+4) install filebeat (beat) 
