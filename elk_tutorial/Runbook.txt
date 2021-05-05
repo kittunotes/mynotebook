@@ -1,0 +1,5 @@
+ELK
+Elastic Search  -- index and search 
+Logstash  -- parse log and send to Elastice search for aply machine learning.
+Kibana -- UI/Dashbarod to visulize
+Beat 
