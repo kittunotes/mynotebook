@@ -69,3 +69,33 @@ sudo ssh gemadmin@100.114.2.98 -tt 'sudo service httpd stop'
 ## Date format in bash 
 
 date -d '20121212' +'%Y-%m-%d'
+
+## LDD 
+ldd (List Dynamic Dependencies) is a *nix utility that prints the shared libraries required by each program or shared library specified on the command line.[1] It was developed by Roland McGrath and Ulrich Drepper.[2] If some shared library is missing for any program, that program won't come up.
+
+
+total size is 73,304,396  speedup is 61.71
+gemadmin@DELGEMBIDAPP03 gem-bidplus (develop) $ ldd /usr/bin/wkhtmltopdf
+        linux-vdso.so.1 =>  (0x00007ffc4daeb000)
+        /$LIB/liboneagentproc.so => /lib64/liboneagentproc.so (0x00007f5cadf06000)
+        libXrender.so.1 => /lib64/libXrender.so.1 (0x00007f5cadca6000)
+        libfontconfig.so.1 => /lib64/libfontconfig.so.1 (0x00007f5cada64000)
+        libfreetype.so.6 => /lib64/libfreetype.so.6 (0x00007f5cad7a5000)
+        libXext.so.6 => /lib64/libXext.so.6 (0x00007f5cad593000)
+        libX11.so.6 => /lib64/libX11.so.6 (0x00007f5cad255000)
+        libz.so.1 => /lib64/libz.so.1 (0x00007f5cad03f000)
+        libdl.so.2 => /lib64/libdl.so.2 (0x00007f5cace3b000)
+        librt.so.1 => /lib64/librt.so.1 (0x00007f5cacc33000)
+        libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f5caca17000)
+        libstdc++.so.6 => /lib64/libstdc++.so.6 (0x00007f5cac710000)
+        libm.so.6 => /lib64/libm.so.6 (0x00007f5cac40e000)
+        libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00007f5cac1f8000)
+        libc.so.6 => /lib64/libc.so.6 (0x00007f5cabe2a000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f5cadeb1000)
+        libexpat.so.1 => /lib64/libexpat.so.1 (0x00007f5cabc00000)
+        libuuid.so.1 => /lib64/libuuid.so.1 (0x00007f5cab9fb000)
+        libbz2.so.1 => /lib64/libbz2.so.1 (0x00007f5cab7eb000)
+        libpng15.so.15 => /lib64/libpng15.so.15 (0x00007f5cab5c0000)
+        libxcb.so.1 => /lib64/libxcb.so.1 (0x00007f5cab398000)
+        libXau.so.6 => /lib64/libXau.so.6 (0x00007f5cab194000)
+
