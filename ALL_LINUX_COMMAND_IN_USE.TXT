@@ -98,4 +98,21 @@ gemadmin@DELGEMBIDAPP03 gem-bidplus (develop) $ ldd /usr/bin/wkhtmltopdf
         libpng15.so.15 => /lib64/libpng15.so.15 (0x00007f5cab5c0000)
         libxcb.so.1 => /lib64/libxcb.so.1 (0x00007f5cab398000)
         libXau.so.6 => /lib64/libXau.so.6 (0x00007f5cab194000)
+        
+####Use the top command in Linux/Unix:#####
+top
+press shift+m after running the top command
+or you can interactively choose which column to sort on
+press Shift+f to enter the interactive menu
+press the up or down arrow until the %MEM choice is highlighted
+press s to select %MEM choice
+press enter to save your selection
+press q to exit the interactive menu
+Or specify the sort order on the command line
+
+# on OS-X
+top -o MEM
+# other distros
+top -o %MEM
+
 
