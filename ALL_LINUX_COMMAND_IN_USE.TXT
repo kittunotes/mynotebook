@@ -115,4 +115,24 @@ top -o MEM
 # other distros
 top -o %MEM
 
+#FRee Swap Memory #
+
+gemadmin@DELGEMBIDAPP03 unsigned $ free -mh
+              total        used        free      shared  buff/cache   available
+Mem:            63G         43G        329M        172M         19G         19G
+Swap:           15G         13G        2.1G
+
+cat /proc/sys/vm/swappiness
+sudo sysctl vm.swappiness=x
+(where x is the swap value you wish to set)
+
+Check space: # free -m 
+Disable swap: # swapoff -a 
+
+Wait approx 30 sec 
+(use free -m to see the amount of swap used/available decrease over time)
+
+Enable swap: # swapon -a 
+
+
 
