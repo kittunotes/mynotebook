@@ -1,0 +1,8 @@
+[gemadmin@DELGEMIDACRMUAT ~]$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+Loaded plugins: langpacks, product-id, subscription-manager
+adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+grabbing file https://download.docker.com/linux/centos/docker-ce.repo to /etc/yum.repos.d/docker-ce.repo
+repo saved to /etc/yum.repos.d/docker-ce.repo
+[gemadmin@DELGEMIDACRMUAT ~]$ sudo yum install docker-ce
+Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager, ulninfo
+
