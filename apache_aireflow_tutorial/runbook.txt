@@ -1,0 +1,9 @@
+or example, we need to send an email if a worker finds today’s prices of apple in supermarket A is cheaper than that in supermarket B, and the worker needs to wait until all crawlers finished their processes.
+Crawlers [A, B, …, Z] >> Comparison Worker >> Email Alarm
+For this, We need Airflow! (Of course, you can run scripts one by one…)
+
+
+As mentioned in the documentation, you may try Airflow with SQLite as its backend database for experimenting and learning if you don’t want to initiate a real database (mainly MySQL or PostgreSQL). After pip installation success, you can start Airflow (including database, web server and scheduler) simply:
+airflow initdb
+airflow webserver -p 8080
+airflow scheduler
